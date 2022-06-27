@@ -1,8 +1,13 @@
 import { useSelector } from "react-redux";
 import { ResumeBuy } from "./style";
+import {toast} from 'react-toastify'
 
 const FinishBuy = () => {
   const listCart = useSelector(({ cart }) => cart);
+
+  const handleBuy = () => {
+    toast.error('Faça login para efetuar sua compra')
+  }
 
   return (
     <ResumeBuy>
@@ -16,12 +21,12 @@ const FinishBuy = () => {
       <div>
         <h3>Valor total:</h3>
         <p>
-          R${listCart
+          R$  {listCart
             .reduce((prev, curr) => prev + curr.price,0).toFixed(2)
             }
         </p>
       </div>
-      <button>Finalizar Pedido</button>
+      <button onClick={() => handleBuy()}>Finalizar Pedido</button>
     </ResumeBuy>
   );
 };

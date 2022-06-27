@@ -1,7 +1,8 @@
-import Product from "../Product"
 import { useSelector } from "react-redux"
+import CardCart from "../CardCart"
+import {HiOutlineShoppingCart } from 'react-icons/hi'
 
-import { CartDiv, ProductsCart } from "./style"
+import { CartDiv, NoItem, ProductsCart } from "./style"
 
 const Cart = () => {
 
@@ -9,13 +10,14 @@ const Cart = () => {
 
     return(
         <CartDiv>
-            <h2>Carrinho</h2>
-
             <ProductsCart>
                 {listCart.length > 0? 
-                listCart.map((itemCart) => (<li key={itemCart.id}><Product isItOnCart={true} product={itemCart}/></li>))
+                listCart.map((itemCart) => (<li key={itemCart.id}><CardCart product={itemCart}/></li>))
                 : 
-                (<h4>Carrinho vazio</h4>)}
+                (<NoItem>
+                    <h4>Carrinho vazio </h4>
+                    <h4> <HiOutlineShoppingCart/> </h4>
+                </NoItem>)}
             </ProductsCart>
         </CartDiv>
     )
