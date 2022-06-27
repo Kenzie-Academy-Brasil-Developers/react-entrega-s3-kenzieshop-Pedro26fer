@@ -1,29 +1,26 @@
-import { BsFillCartPlusFill, BsFillCartDashFill } from 'react-icons/bs'
-import { CardProduct } from './style.'
-import { useDispatch } from 'react-redux'
-import { addCart, removeCart } from '../../store/modules/cart/actions'
+import { BsFillCartPlusFill } from "react-icons/bs";
+import { CardProduct } from "./style.";
+import { useDispatch } from "react-redux";
+import { addProductThunk } from "../../store/modules/cart/thunk";
 
+const Product = ({ product}) => {
+  const dispatch = useDispatch();
+  const { img, name, description, price} = product;
 
-const Product = ({product, isItOnCart = false}) => {
+  return (
+    <CardProduct>
+      <h3>{name}</h3>
+      <img src={img} alt={name} />
+      <p>{description}</p>
+      <span>
+        {price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+      </span>
 
-    const dispatch = useDispatch()
-    const {img,name,description,price,id} = product
+      <button onClick={() => dispatch(addProductThunk(product))}>
+        Adicionar <BsFillCartPlusFill />
+      </button>
+    </CardProduct>
+  );
+};
 
-    return(
-        <CardProduct>
-            <h3>{name}</h3>
-            <img src={img} alt={name} />
-            <p>{description}</p>
-            <span>{price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
-            {
-                !isItOnCart? (
-                    <button onClick={() => dispatch(addCart(product))}>Adicionar <BsFillCartPlusFill/> </button>
-                ) : (
-                    <button onClick={() => dispatch(removeCart(id))}>Remover <BsFillCartDashFill/> </button>
-                )
-            }
-        </CardProduct>
-    )
-}
-
-export default Product
+export default Product;

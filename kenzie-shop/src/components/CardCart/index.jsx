@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { BsFillCartDashFill } from 'react-icons/bs'
-import { removeCart } from "../../store/modules/cart/actions"
 import { CurrentSale } from "./style"
+import { removeCartThunk } from "../../store/modules/cart/thunk"
 
 const CardCart = ({product}) => {
 
@@ -17,7 +17,7 @@ const CardCart = ({product}) => {
                 <p> {description} </p>
             </div>
             <span> {price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span>
-            <button onClick={() => dispatch(removeCart(id))}>Remover <BsFillCartDashFill/> </button>
+            <button onClick={() => dispatch(removeCartThunk(id))}>Remover   <BsFillCartDashFill/> </button>
         </CurrentSale>
     )
 

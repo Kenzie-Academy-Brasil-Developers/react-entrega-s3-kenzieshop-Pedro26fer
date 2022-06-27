@@ -43,6 +43,10 @@ export const CardProduct = styled.div`
         border-radius: 8px;
 
         margin-top: 5px;
+
+        :hover{
+            padding: 6px;
+        }
     }
 
     h3{

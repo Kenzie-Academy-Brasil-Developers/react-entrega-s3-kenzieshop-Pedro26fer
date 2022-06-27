@@ -1,6 +1,6 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT } from "../cart/actionsTypes"
 
-const cartReducer = (state = [], action) => {
+const cartReducer = (state = JSON.parse(localStorage.getItem("cart")) || [], action) => {
     switch(action.type){
         case ADD_PRODUCT:
 
@@ -10,10 +10,10 @@ const cartReducer = (state = [], action) => {
             
         case REMOVE_PRODUCT:
             
-            const { id } = action
-            const newList = state.filter((prod) => prod.id !== id)
+            const { list } = action
             
-            return newList
+            
+            return list
             
             default:
                 return state

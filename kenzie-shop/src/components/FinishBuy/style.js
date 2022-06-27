@@ -33,6 +33,9 @@ export const ResumeBuy = styled.div`
         button{
             box-sizing: border-box;
             padding: 7px;
+            :hover{
+                padding: 8px;
+            }
 
             font-size: 17px;
 

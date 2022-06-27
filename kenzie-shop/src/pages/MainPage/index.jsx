@@ -5,8 +5,7 @@ function MainPage(){
 
     return(
         <>
-            <Header/>
-            
+            <Header/>            
             <Products/>
         </>
     )
